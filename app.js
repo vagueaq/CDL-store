@@ -53,10 +53,11 @@ const updatePrices = function(inp1, inp2, inp3, formNum){
          throw new Error('NaN')
       } 
     }catch(err){
+        //catch and return any errors so the previous value or the obj does not get updated
         return console.error(err)
     }
 
-     //updating the default objects to the inputted values
+    //updating the default objects to the inputted values
      pricesOfTheWeek[formNum].price = newPrice
      pricesOfTheWeek[formNum].applyDiscountAfter = applyDiscountAfter
      pricesOfTheWeek[formNum].deduct = discount
@@ -70,7 +71,34 @@ formA.addEventListener('submit', e =>{
     updatePrices(
         e.target.children[0].value, 
         e.target.children[1].value, 
-        e.target.children[0].value, 0)
+        e.target.children[2].value, 0)
+})
+
+// event listener for form B
+formB.addEventListener('submit', e =>{
+    e.preventDefault()
+    updatePrices(
+        e.target.children[0].value, 
+        e.target.children[1].value, 
+        e.target.children[2].value, 1)
+})
+
+// event listener for form C
+formC.addEventListener('submit', e =>{
+    e.preventDefault()
+    updatePrices(
+        e.target.children[0].value, 
+        e.target.children[1].value, 
+        e.target.children[2].value, 2)
+})
+
+// event listener for form C
+formD.addEventListener('submit', e =>{
+    e.preventDefault()
+    updatePrices(
+        e.target.children[0].value, 
+        e.target.children[1].value, 
+        e.target.children[2].value, 3)
 })
 
 
