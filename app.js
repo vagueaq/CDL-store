@@ -11,9 +11,9 @@ let pricesOfTheWeek = [
     },
     {
         name: 'B',
-        price: 0.30,
+        price: 4,
         applyDiscountAfter: 3,
-        deduct: 0.20
+        deduct: 2
     },
     {
         name: 'C',
@@ -28,6 +28,40 @@ let pricesOfTheWeek = [
         deduct: 0.20
     }
 ]
+
+//Admin Section
+
+//grabbing the forms and buttons from the DOM
+const formA = document.querySelector('.form-a')
+const formB = document.querySelector('.form-b')
+const formC = document.querySelector('.form-c')
+const formD = document.querySelector('.form-d')
+
+//event for form A
+formA.addEventListener('submit', e =>{
+    e.preventDefault()
+
+    const priceOfA = parseFloat(e.target.children[0].value)
+    const aApplyDiscountAfter = parseInt(e.target.children[1].value)
+    const aDiscount = parseFloat(e.target.children[2].value)
+
+    //checking if input is number
+    if(isNaN(priceOfA) || isNaN(aApplyDiscountAfter) ){ 
+       return console.log('yaaay')
+    }
+    if(isNaN(aDiscount)){
+        return console.log('yaaay')
+     } 
+
+    //updating the default objects to the inputted values
+    pricesOfTheWeek[0].price = priceOfA
+    pricesOfTheWeek[0].applyDiscountAfter = aApplyDiscountAfter
+    pricesOfTheWeek[0].deduct = aDiscount
+})
+
+
+
+
 
 
 // CDL Store Section
@@ -58,6 +92,7 @@ const calcDiscopuntSum = function(){
     
 }
 
+
 const printPrices = function(){
     //printing the price of singles + price of batches to the DOM
     checkout.innerHTML = `
@@ -67,6 +102,8 @@ const printPrices = function(){
     <h1>${countTotal[3]} D: £${singlesPrice[3] + batchPrice[3]}</h1>
     `
 }
+
+
 
 
 // check which button was clicked
@@ -95,3 +132,10 @@ btnItems.addEventListener('click', e =>{
         printPrices()
     }
 })
+
+
+
+
+
+
+
