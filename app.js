@@ -37,30 +37,41 @@ const formB = document.querySelector('.form-b')
 const formC = document.querySelector('.form-c')
 const formD = document.querySelector('.form-d')
 
-//event for form A
+// this function checks if Input is number
+//if is number: update priceOfTheWeek object based on the last Argument passede to the function
+const updatePrices = function(inp1, inp2, inp3, formNum){
+    const newPrice = parseFloat(inp1)
+    const applyDiscountAfter = parseInt(inp2)
+    const discount = parseFloat(inp3)
+
+    try{
+    //checking if input is number
+    if(isNaN(newPrice) || isNaN(applyDiscountAfter) ){ 
+        throw new Error('NaN')
+     }
+     if(isNaN(discount)){
+         throw new Error('NaN')
+      } 
+    }catch(err){
+        return console.error(err)
+    }
+
+     //updating the default objects to the inputted values
+     pricesOfTheWeek[formNum].price = newPrice
+     pricesOfTheWeek[formNum].applyDiscountAfter = applyDiscountAfter
+     pricesOfTheWeek[formNum].deduct = discount
+
+}
+
+// event listener for form A
 formA.addEventListener('submit', e =>{
     e.preventDefault()
 
-    const priceOfA = parseFloat(e.target.children[0].value)
-    const aApplyDiscountAfter = parseInt(e.target.children[1].value)
-    const aDiscount = parseFloat(e.target.children[2].value)
-
-    //checking if input is number
-    if(isNaN(priceOfA) || isNaN(aApplyDiscountAfter) ){ 
-       return console.log('yaaay')
-    }
-    if(isNaN(aDiscount)){
-        return console.log('yaaay')
-     } 
-
-    //updating the default objects to the inputted values
-    pricesOfTheWeek[0].price = priceOfA
-    pricesOfTheWeek[0].applyDiscountAfter = aApplyDiscountAfter
-    pricesOfTheWeek[0].deduct = aDiscount
+    updatePrices(
+        e.target.children[0].value, 
+        e.target.children[1].value, 
+        e.target.children[0].value, 0)
 })
-
-
-
 
 
 
