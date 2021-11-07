@@ -11,21 +11,21 @@ let pricesOfTheWeek = [
     },
     {
         name: 'B',
-        price: 4,
-        applyDiscountAfter: 3,
-        deduct: 2
+        price: 0.30,
+        applyDiscountAfter: 2,
+        deduct: 0.15
     },
     {
         name: 'C',
         price: 0.20,
-        applyDiscountAfter: 3,
-        deduct: 0.20
+        applyDiscountAfter: 0,
+        deduct: 0
     },
     {
         name: 'D',
-        price: 0.10,
-        applyDiscountAfter: 3,
-        deduct: 0.20
+        price: 0.15,
+        applyDiscountAfter: 0,
+        deduct: 0
     }
 ]
 
