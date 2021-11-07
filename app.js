@@ -150,7 +150,7 @@ const printPrices = function(){
 
 // check which button was clicked
 btnItems.addEventListener('click', e =>{
-    if(e.target.className === 'btn'){
+    if(e.target.name === 'btn'){
         //add 1 to the count of the button that was clicked
         //calculate the price
         switch(e.target.id){

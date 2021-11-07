@@ -1,0 +1,16 @@
+button {
+  width: 10rem;
+  border: none;
+}
+.btn {
+  width: 8rem;
+}
+p {
+  color: red;
+}
+html {
+  text-align: center;
+}
+h1 {
+  color: rgb(20, 72, 121);
+}
