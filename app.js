@@ -112,7 +112,7 @@ let batchPrice = [0,0,0,0] // price of all batches selected
 let countTotal = [0,0,0,0]
 
 
-const calcDiscopuntSum = function(){
+const calcPrices = function(){
     //using a for and not a forEach because i need the value of i
     for(let i = 0; i < count.length; i++){
         // if count of singles === 1 full batch, add 1 to batch
@@ -134,11 +134,14 @@ const calcDiscopuntSum = function(){
 
 const printPrices = function(){
     //printing the price of singles + price of batches to the DOM
+    const totalPrice = singlesPrice[0] + batchPrice[0] + singlesPrice[1] + batchPrice[1] + singlesPrice[2] + batchPrice[2] + singlesPrice[3] + batchPrice[3]
     checkout.innerHTML = `
-    <h1>${countTotal[0]} A: £${singlesPrice[0] + batchPrice[0]}</h1>
-    <h1>${countTotal[1]} B: £${singlesPrice[1] + batchPrice[1]}</h1>
-    <h1>${countTotal[2]} C: £${singlesPrice[2] + batchPrice[2]}</h1>
-    <h1>${countTotal[3]} D: £${singlesPrice[3] + batchPrice[3]}</h1>
+        <h1>${countTotal[0]} A: £${singlesPrice[0] + batchPrice[0]}</h1>
+        <h1>${countTotal[1]} B: £${singlesPrice[1] + batchPrice[1]}</h1>
+        <h1>${countTotal[2]} C: £${singlesPrice[2] + batchPrice[2]}</h1>
+        <h1>${countTotal[3]} D: £${singlesPrice[3] + batchPrice[3]}</h1>
+        <br />
+        <h1>Total Price: £${totalPrice}</h1>
     `
 }
 
@@ -167,8 +170,10 @@ btnItems.addEventListener('click', e =>{
                 count[3]++
                 singlesPrice[3] = count[3] * pricesOfTheWeek[3].price
         }
-        calcDiscopuntSum()
+        //after checkingwhich button was clicked, we calculate with calcPrices() and print the price with printPrices()
+        calcPrices()
         printPrices()
+
     }
 })
 
